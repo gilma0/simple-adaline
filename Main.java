@@ -3,7 +3,6 @@ import java.io.IOException;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		String path = "C:\\Users\\Gil-PC\\Downloads\\wpbc.data";
 		Adaline adaline = new Adaline();
 		adaline.getNeuron().set_Inputs_Desire(path);
