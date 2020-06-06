@@ -64,13 +64,7 @@ public class Neuron {
 		this.inputs = new double[198][32];
 		this.desire = new double[198];
 		String[] temp = new String[198]; //array of lines
-
 		BufferedReader br = new BufferedReader(new FileReader(file));
-
-		//String st;
-		/*for (int i = 0; i < temp.length; i++) {
-			temp[i] = br.readLine();
-		}*/
 		for (int i = 0; i < temp.length; i++) {
 			String[] temp2 = br.readLine().split(",");
 			if (temp2[1].equalsIgnoreCase("N")) {

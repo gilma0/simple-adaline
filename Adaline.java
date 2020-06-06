@@ -14,7 +14,7 @@ public class Adaline {
 	}
 	
 	public void train(int iter_num, double percent) {
-		this.training = (int)(this.neuron.getInputs().length * percent);
+		this.training = (int)(this.neuron.getInputs().length * percent); //getting right amount to train on
 		this.bias = Math.random();
 		double rate = 0.001;
 		int f = 0; //iteration counter
@@ -25,7 +25,7 @@ public class Adaline {
 				for (int j = 0; j < this.neuron.getWeights().length; j++) {
 					y += (this.neuron.getInputs()[i][j] * this.neuron.getWeights()[j]);
 				}
-				for (int j = 0; j < this.neuron.getWeights().length; j++) {
+				for (int j = 0; j < this.neuron.getWeights().length; j++) { //update weights
 					this.neuron.getWeights()[j] =  (this.neuron.getWeights()[j] +  (rate * (this.neuron.getDesire()[i] - y) * this.neuron.getInputs()[i][j]));
 				}
 				bias += (rate * (this.neuron.getDesire()[i] - y));
@@ -51,32 +51,7 @@ public class Adaline {
 			if(y == this.neuron.getDesire()[i]) {
 				num_right++;
 			}
-		}
-		
-		/*			
-		 //test training
-		double num_right = 0;
-		double num_samples = 0;
-		for (int i = 0; i < mat.length-20; i++) {
-			double y = bias;
-			num_samples++;
-			for (int j = 0; j < mat[i].length; j++) {
-				y += mat[i][j] * weights[j];
-			}
-			if (y > 0) {
-				y = 1;
-			}else{
-				y = -1;
-			}
-			System.out.println("y: " + y + "\ndesire: " + desire[i]);
-			if(y == desire[i]) {
-				num_right++;
-			}
-			
-		
-		}
-		*/
-		
+		}	
 		System.out.println("% of right in test: " + (num_right/num_samples)*100);
 	}
 	
