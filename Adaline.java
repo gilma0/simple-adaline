@@ -42,7 +42,7 @@ public class Adaline {
 			for (int j = 0; j < this.neuron.getInputs()[i].length; j++) {
 				y += this.neuron.getInputs()[i][j] * this.neuron.getWeights()[j];
 			}
-			System.out.println("y: " + y + "\ndesire: " + this.neuron.getDesire()[i]);
+			//System.out.println("y: " + y + "\ndesire: " + this.neuron.getDesire()[i]);
 			if (y > 0) {
 				y = 1;
 			}else{
