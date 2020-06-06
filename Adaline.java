@@ -77,7 +77,7 @@ public class Adaline {
 		}
 		*/
 		
-		System.out.println("% of right: " + (num_right/num_samples)*100);
+		System.out.println("% of right in test: " + (num_right/num_samples)*100);
 	}
 	
 	public void test_training() {
@@ -99,6 +99,6 @@ public class Adaline {
 				num_right++;
 			}
 		}
-		System.out.println("% of right: " + (num_right/num_samples)*100);
+		System.out.println("% of right in training: " + (num_right/num_samples)*100);
 	}
 }

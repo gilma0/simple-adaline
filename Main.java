@@ -12,6 +12,8 @@ public class Main {
 		adaline.train(100000, 0.6666667);
 		long stopTime = System.nanoTime();
 		adaline.test();
-		System.out.println("\n" + "nanoTime: " + (stopTime - startTime));
+		adaline.test_training();
+		//System.out.println("\n" + "nanoTime: " + (stopTime - startTime));
+		System.out.println("\n" + "time in seconds:  " + (double)(stopTime - startTime) / 1000000000);
 	}
 }
