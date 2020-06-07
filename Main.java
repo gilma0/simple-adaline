@@ -6,10 +6,11 @@ public class Main {
 		String path = "C:\\Users\\Gil-PC\\Downloads\\wpbc.data";
 		Adaline adaline = new Adaline();
 		double bias = Math.random();
+		double rate = 0.001;
 		adaline.getNeuron().set_Inputs_Desire(path);
 		adaline.getNeuron().normalize();
 		long startTime = System.nanoTime();
-		adaline.train(100000, 0.6666667, bias);
+		adaline.train(100000, 0.6666667, bias, rate);
 		long stopTime = System.nanoTime();
 		adaline.test();
 		adaline.test_training();

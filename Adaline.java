@@ -4,6 +4,7 @@ public class Adaline {
 	Neuron neuron; 
 	int training;
 	double bias;
+	double rate;
 	
 	public Adaline() {
 		this.neuron = new Neuron();
@@ -13,10 +14,10 @@ public class Adaline {
 		return this.neuron;
 	}
 	
-	public void train(int iter_num, double percent, double bias) {
+	public void train(int iter_num, double percent, double bias, double learn) {
 		this.training = (int)(this.neuron.getInputs().length * percent); //getting right amount to train on
 		this.bias = bias;
-		double rate = 0.001;
+		this.rate = learn;
 		int f = 0; //iteration counter
 		//training
 		while(f < iter_num) {
@@ -26,9 +27,9 @@ public class Adaline {
 					y += (this.neuron.getInputs()[i][j] * this.neuron.getWeights()[j]);
 				}
 				for (int j = 0; j < this.neuron.getWeights().length; j++) { //update weights
-					this.neuron.getWeights()[j] =  (this.neuron.getWeights()[j] +  (rate * (this.neuron.getDesire()[i] - y) * this.neuron.getInputs()[i][j]));
+					this.neuron.getWeights()[j] =  (this.neuron.getWeights()[j] +  (this.rate * (this.neuron.getDesire()[i] - y) * this.neuron.getInputs()[i][j]));
 				}
-				this.bias += (rate * (this.neuron.getDesire()[i] - y));
+				this.bias += (this.rate * (this.neuron.getDesire()[i] - y));
 			}
 			f++;
 		}
