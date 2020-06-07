@@ -13,22 +13,22 @@ public class Adaline {
 		return this.neuron;
 	}
 	
-	public void train(int iter_num, double percent) {
+	public void train(int iter_num, double percent, double bias) {
 		this.training = (int)(this.neuron.getInputs().length * percent); //getting right amount to train on
-		this.bias = Math.random();
+		this.bias = bias;
 		double rate = 0.001;
 		int f = 0; //iteration counter
 		//training
 		while(f < iter_num) {
 			for (int i = 0; i < training; i++) {
-				double y = bias;
+				double y = this.bias;
 				for (int j = 0; j < this.neuron.getWeights().length; j++) {
 					y += (this.neuron.getInputs()[i][j] * this.neuron.getWeights()[j]);
 				}
 				for (int j = 0; j < this.neuron.getWeights().length; j++) { //update weights
 					this.neuron.getWeights()[j] =  (this.neuron.getWeights()[j] +  (rate * (this.neuron.getDesire()[i] - y) * this.neuron.getInputs()[i][j]));
 				}
-				bias += (rate * (this.neuron.getDesire()[i] - y));
+				this.bias += (rate * (this.neuron.getDesire()[i] - y));
 			}
 			f++;
 		}

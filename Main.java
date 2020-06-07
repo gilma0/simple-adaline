@@ -5,10 +5,11 @@ public class Main {
 	public static void main(String[] args) throws IOException {
 		String path = "C:\\Users\\Gil-PC\\Downloads\\wpbc.data";
 		Adaline adaline = new Adaline();
+		double bias = Math.random();
 		adaline.getNeuron().set_Inputs_Desire(path);
 		adaline.getNeuron().normalize();
 		long startTime = System.nanoTime();
-		adaline.train(100000, 0.6666667);
+		adaline.train(100000, 0.6666667, bias);
 		long stopTime = System.nanoTime();
 		adaline.test();
 		adaline.test_training();
