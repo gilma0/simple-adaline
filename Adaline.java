@@ -14,10 +14,10 @@ public class Adaline {
 		return this.neuron;
 	}
 	
-	public void train(int iter_num, double percent, double bias, double learn) {
+	public void train(int iter_num, double percent, double bias, double learn_rate) {
 		this.training = (int)(this.neuron.getInputs().length * percent); //getting right amount to train on
 		this.bias = bias;
-		this.rate = learn;
+		this.rate = learn_rate;
 		int f = 0; //iteration counter
 		//training
 		while(f < iter_num) {
@@ -37,6 +37,10 @@ public class Adaline {
 	public void test() {
 		double num_right = 0;
 		double num_samples = 0;
+		int real_recur = 0;
+		int real_unrecur = 0;
+		int recur = 0;
+		int unrecur = 0;
 		for (int i = this.training; i < this.neuron.getInputs().length; i++) {
 			double y = bias;
 			num_samples++;
@@ -49,11 +53,23 @@ public class Adaline {
 			}else{
 				y = -1;
 			}
+			if(this.neuron.getDesire()[i] == 1) {
+				real_recur++;
+			}else {
+				real_unrecur++;
+			}
 			if(y == this.neuron.getDesire()[i]) {
 				num_right++;
+				if(y == 1) {
+					recur++;
+				}else {
+					unrecur++;
+				}
 			}
 		}	
 		System.out.println("% of right in test: " + (num_right/num_samples)*100);
+		System.out.println("real recur in test: " + recur + " out of " + real_recur);
+		System.out.println("real unrecur in test: " + unrecur + " out of " + real_unrecur);
 	}
 	
 	public void test_training() {

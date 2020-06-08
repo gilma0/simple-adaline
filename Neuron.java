@@ -74,7 +74,7 @@ public class Neuron {
 			}
 			for (int j = 3; j < temp2.length; j++) {
 				if (temp2[j].equalsIgnoreCase("?")) {
-					this.inputs[i][j - 3] = (int)Math.random()*10;
+					this.inputs[i][j - 3] = (int)(Math.random()*10);
 				} else {
 					this.inputs[i][j - 3] = Double.parseDouble(temp2[j]);
 				}
